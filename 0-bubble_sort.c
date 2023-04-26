@@ -1,7 +1,7 @@
 #include "sort.h"
 /**
  * SwapFunc:- Function to swap int
- * 
+ *
  * @i: integer value
  * @j: integer value
  */
@@ -27,13 +27,18 @@ void bubble_sort(int *array, size_t size)
 	size_t x;
 	size_t y;
 
-	for(x = 0; x < size-1; ++x)
+	if (array == NULL || size <2)
 	{
-		for(y = 0; y < size -x -1; ++y)
+		return;
+	}
+
+	for (x = 0; x < size - 1; ++x)
+	{
+		for (y = 0; y < size - x - 1; ++y)
 		{
-			if (array[y] > array[y+1])
+			if (array[y] > array[y + 1])
 			{
-				SwapFunc(&array[y], &array[y+1]);
+				SwapFunc(&array[y], &array[y + 1]);
 				print_array(array, size);
 			}
 		}
