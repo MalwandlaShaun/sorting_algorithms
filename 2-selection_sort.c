@@ -21,7 +21,7 @@ void swapFunc(int *a, int *b)
 void selection_sort(int *array, size_t size)
 {
 	size_t i, step;
-	int min_idx;
+	int *min_idx;
 
 	if (array == NULL || size < 2)
 	{
@@ -30,16 +30,16 @@ void selection_sort(int *array, size_t size)
 
 	for (step = 0; step < size - 1; step++)
 	{
-		min_idx = step;
+		min_idx = array + step;
 		for (i = step + 1; i < size; i++)
 		{
-			if (array[i] < array[min_idx])
-			{
-				min_idx = i;
-			}
+			min_idx = (array[i] < *min_idx) ? (array + i) : min_idx;
 		}
 
-		swapFunc(&array[min_idx], &array[step]);
-		print_array(array, size);
+		if ((array + step) != min_idx)
+		{
+			swapFunc(array + step, min_idx);
+			print_array(array, size);
+		}
 	}
 }
