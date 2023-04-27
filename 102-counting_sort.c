@@ -1,10 +1,10 @@
 #include "sort.h"
 /**
- * get_max_element:- function to find maximum elemnt in array
+ * get_max_element:- 'Function to find maximum elemnt in array'
  * @array: array of integer values
  * @size: size of array
  *
- * Returns: Maximum element in an array.
+ * Return: Maximum element in an array.
  */
 int get_max_element(int *array, int size)
 {
