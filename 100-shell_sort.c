@@ -14,7 +14,7 @@ void swapFunc(int *a, int *b)
 }
 
 /**
- * shell_sort:- Using shell sort based on Knuth increment to ascend numbers in order
+ * shell_sort:- Using shell sort based on Knuth increment
  * @array: Array of numbers
  * @size: size of array
  */
@@ -35,7 +35,7 @@ void shell_sort(int *array, size_t size)
 		interval = interval * 3 + 1;
 	}
 
-	for (;interval >= 1; interval /= 3)
+	for (; interval >= 1; interval /= 3)
 	{
 		for (a = interval; a < size; a++)
 		{
