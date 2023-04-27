@@ -14,9 +14,8 @@ int main(void)
 
 	print_array(array, n);
 	printf("\n");
-	shell_sort(array, n);
+	counting_sort(array, n);
 	printf("\n");
 	print_array(array, n);
 	return (0);
 }
-
