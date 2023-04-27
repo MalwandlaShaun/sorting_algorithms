@@ -58,7 +58,7 @@ void counting_sort(int *array, size_t size)
 		array[i] = output_array[i];
 	}
 
-	print_array(count_array, max + 1);
+	print_array(output_array, max + 1);
 
 	free(count_array);
 	free(output_array);
