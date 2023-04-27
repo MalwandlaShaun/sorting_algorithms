@@ -32,42 +32,62 @@ int get_max_element(int *array, int size)
  */
 void counting_sort(int *array, size_t size)
 {
-	int j, max, *output_array, *count_array;
-	size_t i;
+	int i, max, *output_array, *count_array;
 
 	if (array == NULL || size < 2)
+	{
 		return;
-
-	/* Allocate memory for output array. */
-	output_array = malloc(sizeof(int) * size);
-	if (output_array == NULL)
-		return;
+	}
 
 	/* Determine the maximum element in the array */
 	max = get_max_element(array, size);
 
 	/* Allocat memory for the count array */
-	count_array = calloc(max + 1, sizeof(int));
-	if (count_array == NULL)
-		free(output_array);
+	count_array = malloc(sizeof(int) * (max + 1));
+	if(count_array == NULL)
+	{
 		return;
+	}
 
-	/* Count the number of occurrences of each element in the array */
-	for (i = 0; i < size; i++)
-		count_array[array[i]]++;
+	/* Allocate memory for output array. */
+	output_array = malloc(sizeof(int) * size);
+	if(output_array == NULL)
+	{
+		free(count_array);
+		return;
+	}
+
+	for (i = 0; i <= max; i++)
+	{
+		count_array[i] = 0;
+	}
+
+	/* Store the count of each element in count_array */
+	for (i = 0; i < (int)size; i++)
+	{
+		count_array[array[i]] += 1;
+	}
+
 
 	/* Compute the cumulative sum of the counts in the count array. */
-	for (j = 1; j <= max; j++)
-		count_array[j] += count_array[j - 1];
+	for (i = 1; i <= max; i++)
+	{
+		count_array[i] += count_array[i - 1];
+	}
 	print_array(count_array, max + 1);
 
 	/* Construct the output array by placing each element in its position */
-	for (j = size - 1; j >= 0; j--)
-		output_array[--count_array[array[j]]] = array[j];
+	for (i = size - 1; i >= 0; i--)
+	{
+		output_array[count_array[array[i]] - 1] = array[i];
+		count_array[array[i]]--;
+	}
 
 	/* Copy the output array back into the input array */
-	for (i = 0; i < size; i++)
+	for (i = 0; i < (int)size; i++)
+	{
 		array[i] = output_array[i];
+	}
 
 	/* Free the memory */
 	free(count_array);
