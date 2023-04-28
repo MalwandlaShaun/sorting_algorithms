@@ -44,6 +44,7 @@ void shift_down(int *array, size_t start, size_t end)
 void heap_sort(int *array, size_t size)
 {
 	size_t end;
+	int tmp;
 
 	if (array == NULL || size < 2)
 		return;
@@ -59,10 +60,12 @@ void heap_sort(int *array, size_t size)
 	/* Sort the heap */
 	for (end = size - 1; end > 0; end--)
 	{
-		int tmp = array[end];
+		print_array(array, size);
+		tmp = array[end];
 		array[end] = array[0];
 		print_array(array, size);
 		array[0] = tmp;
+		print_array(array, size);
 		shift_down(array, 0, end - 1);
 	}
 }
