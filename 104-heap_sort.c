@@ -8,10 +8,11 @@
  *
  * Return: void
  */
-void shift_down(int *array, size_t start, size_t end)
+void shift_down(int *array, size_t start, size_t end, size_t size)
 {
 	size_t root = start;
 	size_t child, swap;
+	int tmp;
 
 	while (root * 2 + 1 <= end)
 	{
@@ -24,9 +25,10 @@ void shift_down(int *array, size_t start, size_t end)
 			swap = child + 1;
 		if (swap != root)
 		{
-			int tmp = array[root];
+			tmp = array[root];
 			array[root] = array[swap];
 			array[swap] = tmp;
+			print_array(array, size);
 			root = swap;
 		}
 		else
@@ -52,20 +54,18 @@ void heap_sort(int *array, size_t size)
 	/* Convert array to a heap */
 	for (end = size / 2; end > 0; end--)
 	{
-		shift_down(array, end - 1, size - 1);
-		print_array(array, size);
+		shift_down(array, end - 1, size - 1, size);
 	}
 
 
 	/* Sort the heap */
 	for (end = size - 1; end > 0; end--)
 	{
-		print_array(array, size);
 		tmp = array[end];
 		array[end] = array[0];
-		print_array(array, size);
 		array[0] = tmp;
-		print_array(array, size);
-		shift_down(array, 0, end - 1);
+		if (end != 1)
+			print_array(array, size);
+		shift_down(array, 0, end - 1, size);
 	}
 }
