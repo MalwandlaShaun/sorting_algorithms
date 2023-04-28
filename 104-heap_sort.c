@@ -69,4 +69,5 @@ void heap_sort(int *array, size_t size)
 			print_array(array, size);
 		shift_down(array, 0, end - 1, size);
 	}
+	print_array(array, size);
 }
