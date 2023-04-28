@@ -56,7 +56,7 @@ void heap_sort(int *array, size_t size)
 	}
 
 	print_array(array, size);
-	print_array(array, size);
+
 	/* Sort the heap */
 	for (end = size - 1; end > 0; end--)
 	{
@@ -66,4 +66,5 @@ void heap_sort(int *array, size_t size)
 		shift_down(array, 0, end - 1);
 		print_array(array, size);
 	}
+	print_array(array, size);
 }
