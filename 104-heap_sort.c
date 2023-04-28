@@ -1,10 +1,11 @@
 #include "sort.h"
 
 /**
- * shift_down - Move the element at the root of a heap down to its proper position
+ * shift_down - Move the element at the root of a heap down to proper position
  * @array: The array representing the heap
  * @start: The index of the root of the heap
  * @end: The index of the last element in the heap
+ * @size: size element
  *
  * Return: void
  */
