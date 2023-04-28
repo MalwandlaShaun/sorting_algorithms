@@ -38,4 +38,7 @@ void counting_sort(int *array, size_t size);
 void heap_sort(int *array, size_t size);
 void bitonic_sort(int *array, size_t size);
 
+void bitonic_sort_helper(int *array, size_t size, size_t count, int direction, int *temp);
+void bitonic_merge(int *array, size_t start, size_t count, int direction, int *temp);
+
 #endif
