@@ -50,8 +50,13 @@ void heap_sort(int *array, size_t size)
 
 	/* Convert array to a heap */
 	for (end = size / 2; end > 0; end--)
+	{
 		shift_down(array, end - 1, size - 1);
+		print_array(array, size);
+	}
 
+	print_array(array, size);
+	print_array(array, size);
 	/* Sort the heap */
 	for (end = size - 1; end > 0; end--)
 	{
