@@ -31,18 +31,43 @@ void bitonic_sort(int *array, size_t size)
  * Return: void
  */
 
-void bitonic_sort_helper(int *array, size_t start, size_t count, int direction, int *temp)
+void bitonic_sort_helper(int *array, size_t start, size_t count, int direction,
+		int *temp)
 {
 	size_t i, k;
+	char *dir_str;
+	int new_direc;
 
 	if (count > 1)
 	{
-		printf("Merging [%d/%d] (%d)\n", array[count], array[start], array[direction]);
+		i = start;
 		k = count / 2;
 		bitonic_sort_helper(array, start, k, 1, temp);
 		bitonic_sort_helper(array, start + k, k, 0, temp);
 		bitonic_merge(array, start, count, direction, temp);
-		printf("Result [%d/%d] (%d)\n", array[start], array[count], array[direction]);
+
+		if (direction == 1)
+		{
+			dir_str = "UP";
+		}
+		else
+		{
+			dir_str = "DOWN";
+		}
+
+
+		new_direc = array[start] < array[start + count - 1] ? 1 : 0;
+		if (new_direc == 1)
+		{
+			dir_str = "UP";
+		}
+		else
+		{
+			dir_str = "DOWN";
+		}
+
+		printf("Merging [%d/%d] (%s)\n", array[i], array[k + 1], dir_str);
+		printf("Result [%d/%d] (%s)\n", array[start], array[count], dir_str);
 		for (i = start; i < start + count; i++)
 		{
 			printf("%d ", array[i]);
@@ -62,7 +87,8 @@ void bitonic_sort_helper(int *array, size_t start, size_t count, int direction, 
  * Return: void
  */
 
-void bitonic_merge(int *array, size_t start, size_t count, int direction, int *temp)
+void bitonic_merge(int *array, size_t start, size_t count,
+		int direction, int *temp)
 {
 	size_t i, k;
 	int temp_val;
